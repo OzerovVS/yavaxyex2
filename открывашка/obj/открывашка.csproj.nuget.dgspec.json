@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\Desktop\\открывашка\\открывашка\\открывашка.csproj": {}
+    "C:\\Users\\user\\source\\repos\\открывашка\\открывашка\\открывашка.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\Desktop\\открывашка\\открывашка\\открывашка.csproj": {
+    "C:\\Users\\user\\source\\repos\\открывашка\\открывашка\\открывашка.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Desktop\\открывашка\\открывашка\\открывашка.csproj",
+        "projectUniqueName": "C:\\Users\\user\\source\\repos\\открывашка\\открывашка\\открывашка.csproj",
         "projectName": "открывашка",
-        "projectPath": "C:\\Users\\user\\Desktop\\открывашка\\открывашка\\открывашка.csproj",
+        "projectPath": "C:\\Users\\user\\source\\repos\\открывашка\\открывашка\\открывашка.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Desktop\\открывашка\\открывашка\\obj\\",
+        "outputPath": "C:\\Users\\user\\source\\repos\\открывашка\\открывашка\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
