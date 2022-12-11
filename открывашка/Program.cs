@@ -1,4 +1,9 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
+using System.Collections.Generic;
+using System.Threading;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace открыватель
 {
@@ -30,6 +35,7 @@ namespace открыватель
             Console.WriteLine($"Добавить открывашку - '+'");
             Console.WriteLine($"Удалить открывашку - '-'");
             Console.WriteLine($"Перейти в режим открытия - '*'");
+            ser();
         }
         public static void New()
         {
@@ -117,7 +123,16 @@ namespace открыватель
             {
                 if (g == n.Key)
                 {
-                    Process.Start(sslki[u]);
+                    try
+                    {
+                        Process.Start(new ProcessStartInfo { FileName = sslki[u], UseShellExecute = true });
+                    }
+                    catch
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Отказано в доступе");
+                    }
+                    break;
                 }
                 else
                 {
@@ -125,11 +140,21 @@ namespace открыватель
                 }
             }
         }
+        public static void deser()
+        {
+            vse = JsonConvert.DeserializeObject<List<l>>(File.ReadAllText("C:\\Users\\user\\Desktop\\Result.json")) ?? new List<l>();
+        }
+        public static void ser()
+        {
+            File.WriteAllText("C:\\Users\\user\\Desktop\\Result.json", JsonConvert.SerializeObject(vse));
+        }
+      
     }
     class Program
     {
         static void Main()
         {
+            ch.deser();
             while (true)
             {
                 ConsoleKeyInfo key;

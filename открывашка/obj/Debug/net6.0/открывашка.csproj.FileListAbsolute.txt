@@ -28,3 +28,5 @@ C:\Users\user\source\repos\открывашка\открывашка\obj\Debug\n
 C:\Users\user\source\repos\открывашка\открывашка\obj\Debug\net6.0\открывашка.pdb
 C:\Users\user\source\repos\открывашка\открывашка\obj\Debug\net6.0\открывашка.genruntimeconfig.cache
 C:\Users\user\source\repos\открывашка\открывашка\obj\Debug\net6.0\ref\открывашка.dll
+C:\Users\user\source\repos\открывашка\открывашка\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\user\source\repos\открывашка\открывашка\obj\Debug\net6.0\открывашка.csproj.CopyComplete

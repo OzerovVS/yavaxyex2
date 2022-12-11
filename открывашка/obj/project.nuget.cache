@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "mNu29CEnbmMaMDlgkT2qeOcp8mRTUJs6NhZXPVfjjwz+ebWZETkKxjrByeWKSgkqye/L9RVIprpBII0CHd7L0g==",
+  "dgSpecHash": "ylCejgioYHkEqnVfG7nGBxl3cE4/yXaO2Y+pzx3twyASXY8NUFUXaVXNudBHPs4Nd+N+aMZcC5B+UoWFwROr2Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\user\\source\\repos\\открывашка\\открывашка\\открывашка.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\user\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512"
+  ],
   "logs": []
 }
