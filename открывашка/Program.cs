@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading;
 using Newtonsoft.Json;
 using System.IO;
+using System.Runtime.Intrinsics.X86;
 
 namespace открыватель
 {
@@ -13,11 +14,11 @@ namespace открыватель
         public string sslka;
     }
 
-    internal class ch
+    internal class ch : de_ser
     {
-        private static List<l> vse = new List<l>();
-        private static List<string> sslki = new List<string>();
-        private static List<ConsoleKey> keys = new List<ConsoleKey>();
+        protected static List<l> vse = new List<l>();
+        protected static List<string> sslki = new List<string>();
+        protected static List<ConsoleKey> keys = new List<ConsoleKey>();
         public static void nach()
         {
             int pos = 3;
@@ -35,7 +36,7 @@ namespace открыватель
             Console.WriteLine($"Добавить открывашку - '+'");
             Console.WriteLine($"Удалить открывашку - '-'");
             Console.WriteLine($"Перейти в режим открытия - '*'");
-            ser();
+            ser(vse);
         }
         public static void New()
         {
@@ -77,7 +78,37 @@ namespace открыватель
             }
             vse.Add(hg);
         }
-        public static void Del()
+        public static void Open()
+        {
+            Console.SetCursorPosition(0, 9 + vse.Count);
+            Console.WriteLine("Вводите клавиши, которые доступны. \nЧтобы выйти нажмите '/' ");
+            ConsoleKeyInfo n = Console.ReadKey(true);
+            int u = 0;
+            foreach (ConsoleKey g in keys)
+            {
+                if (g == n.Key)
+                {
+                    try
+                    {
+                        Process.Start(new ProcessStartInfo { FileName = sslki[u], UseShellExecute = true });
+                    }
+                    catch
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Отказано в доступе");
+                    }
+                    break;
+                }
+                else
+                {
+                    u++;
+                }
+            }
+        }
+    }
+    class strelka : ch
+    {
+        public static int Del()
         {
             nach();
             Console.SetCursorPosition(0, 3);
@@ -109,72 +140,49 @@ namespace открыватель
                 Console.SetCursorPosition(0, pos);
                 Console.WriteLine("-->");
             } while (k.Key != ConsoleKey.Enter);
-            vse.RemoveAt(pos - 3);
-            sslki.RemoveAt(pos - 3);
-            keys.RemoveAt(pos - 3);
+            return pos - 3;
         }
-        public static void Open()
-        {
-            Console.SetCursorPosition(0, 9 + vse.Count);
-            Console.WriteLine("Вводите клавиши, которые доступны. \nЧтобы выйти нажмите '/' ");
-            ConsoleKeyInfo n = Console.ReadKey(true);
-            int u = 0;
-            foreach (ConsoleKey g in keys)
-            {
-                if (g == n.Key)
-                {
-                    try
-                    {
-                        Process.Start(new ProcessStartInfo { FileName = sslki[u], UseShellExecute = true });
-                    }
-                    catch
-                    {
-                        Console.Clear();
-                        Console.WriteLine("Отказано в доступе");
-                    }
-                    break;
-                }
-                else
-                {
-                    u++;
-                }
-            }
-        }
-        public static void deser()
+    }
+    class de_ser
+    {
+        public static void deser(List<l> vse)
         {
             vse = JsonConvert.DeserializeObject<List<l>>(File.ReadAllText("C:\\Users\\user\\Desktop\\Result.json")) ?? new List<l>();
         }
-        public static void ser()
+        public static void ser(List<l> vse)
         {
             File.WriteAllText("C:\\Users\\user\\Desktop\\Result.json", JsonConvert.SerializeObject(vse));
         }
-      
+
     }
-    class Program
+    class Program : ch 
     {
         static void Main()
         {
-            ch.deser();
+            deser(vse);
             while (true)
             {
                 ConsoleKeyInfo key;
                 do
                 {
                     Console.Clear();
-                    ch.nach();
+                    nach();
                     key = Console.ReadKey();
                 } while (key.Key != ConsoleKey.Add && key.Key != ConsoleKey.Subtract && key.Key != ConsoleKey.Multiply);
                 if (key.Key == ConsoleKey.Add)
                 {
-                    ch.New();
+                    New();
                 }
                 if (key.Key == ConsoleKey.Subtract)
                 {
-                    ch.Del();
+                    int pos = strelka.Del();
+                    vse.RemoveAt(pos);
+                    sslki.RemoveAt(pos);
+                    keys.RemoveAt(pos);
                 }
                 if (key.Key == ConsoleKey.Multiply)
                 {
-                    ch.Open();
+                    Open();
                 }
             }
         }
