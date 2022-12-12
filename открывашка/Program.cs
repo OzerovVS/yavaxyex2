@@ -145,9 +145,9 @@ namespace открыватель
     }
     class de_ser
     {
-        public static void deser(List<l> vse)
+        public static List<l> deser()
         {
-            vse = JsonConvert.DeserializeObject<List<l>>(File.ReadAllText("C:\\Users\\user\\Desktop\\Result.json")) ?? new List<l>();
+            return JsonConvert.DeserializeObject<List<l>>(File.ReadAllText("C:\\Users\\user\\Desktop\\Result.json")) ?? new List<l>();
         }
         public static void ser(List<l> vse)
         {
@@ -159,7 +159,12 @@ namespace открыватель
     {
         static void Main()
         {
-            deser(vse);
+            vse = deser();
+            foreach (l l in vse)
+            {
+                keys.Add(l.key);
+                sslki.Add(l.sslka);
+            }
             while (true)
             {
                 ConsoleKeyInfo key;
